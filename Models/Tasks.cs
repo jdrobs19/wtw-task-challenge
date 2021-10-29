@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Controllers.Models
+namespace Models
 {
     public class Tasks
     {
@@ -11,6 +11,6 @@ namespace Controllers.Models
         public string Title { get; set; }
         public string Description { get; set; }
         public string Priority { get; set; }
-        public DateTime DueDate { get; set; }
+        public DateTime Due { get; set; }
     }
 }
