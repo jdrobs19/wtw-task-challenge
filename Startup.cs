@@ -50,12 +50,12 @@ namespace wtw_task_challenge
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
+             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller}/{action=Index}/{id?}");
-            });
+             });
 
             app.UseSpa(spa =>
             {
