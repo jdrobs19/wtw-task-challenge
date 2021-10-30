@@ -21,7 +21,7 @@ namespace wtw_task_challenge.Controllers {
     [Route("[controller]")]
     public class TasksController : ControllerBase
     {
-        public void DataConn(Tasks task)
+        public void DataConn(Tasks tasks)
         {
             string connetionString;
             SqlConnection cnn;
@@ -29,7 +29,7 @@ namespace wtw_task_challenge.Controllers {
             cnn = new SqlConnection(connetionString);
             cnn.Open();
             // add to database
-            string sql = "INSERT INTO [dbo].[tasks] ([title], [description], [status], [priority], [due_date]) VALUES ('" + task.Title + "','" + task.Description + "','" + task.Status + "','" + task.Priority + "','" + task.Due + "')";
+            string sql = "INSERT INTO [dbo].[tasks] ([title], [description], [status], [priority], [due_date]) VALUES ('" + tasks.Title + "','" + tasks.Description + "','" + tasks.Status + "','" + tasks.Priority + "','" + tasks.Due + "')";
             SqlCommand command = new SqlCommand(sql, cnn);
             try
                 {
