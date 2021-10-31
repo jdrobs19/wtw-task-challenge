@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import './Tasks.css';
+import { Link, NavLink } from 'react-router-dom';
+import './TaskBoard.css';
 
 export class AddTask extends Component {
+    static displayName = AddTask.name;
 
     render() {
         return (
@@ -34,7 +36,7 @@ export class AddTask extends Component {
                                 </form>
                             </div>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-close" data-dismiss="modal">Back</button>
+                                <NavLink type="button" className="btn btn-close" data-dismiss="modal" tag={Link} to="/taskboard">Back</NavLink>
                                 <button type="button" className="btn btn-save">Save Task</button>
                             </div>
                         </div>
