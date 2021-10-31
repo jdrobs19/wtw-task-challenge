@@ -12,6 +12,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using wtw_task_challenge.utils;
 
 
 namespace wtw_task_challenge.Controllers {
@@ -21,30 +22,7 @@ namespace wtw_task_challenge.Controllers {
     [Route("[controller]")]
     public class TasksController : ControllerBase
     {
-        public void DataConn(Tasks tasks)
-        {
-            string connetionString;
-            SqlConnection cnn;
-            connetionString = "Server=localhost;Database=wtw_task_challenge;Trusted_Connection=True;";
-            cnn = new SqlConnection(connetionString);
-            cnn.Open();
-            // add to database
-            string sql = "INSERT INTO [dbo].[tasks] ([title], [description], [status], [priority], [due_date]) VALUES ('" + tasks.Title + "','" + tasks.Description + "','" + tasks.Status + "','" + tasks.Priority + "','" + tasks.Due + "')";
-            SqlCommand command = new SqlCommand(sql, cnn);
-            try
-                {
-                    command.ExecuteNonQuery();
-                }
-            catch (Exception e)
-                {
-              
-                string help = "";
-                    //Error when save data
-                    //MessageBox.Show("Error to save on database");  //Error when save data
-                }
-            cnn.Close();
-        }
-       
+        private ToDoListManager toDoListManager;
 
         [HttpGet]
 
@@ -78,8 +56,7 @@ namespace wtw_task_challenge.Controllers {
     public IActionResult Post([FromBody] Tasks task)
     {
         //Add task to database
-        DataConn(task);
-        
+        toDoListManager.AddTask(task);
         return Ok(
             task
         );
