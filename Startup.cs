@@ -49,11 +49,11 @@ namespace wtw_task_challenge
 
             app.UseRouting();
 
-             app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
+            _ = app.UseEndpoints(endpoints =>
+             {
+                 _ = endpoints.MapControllerRoute(
+                     name: "default",
+                     pattern: "{controller}/{action=Index}/{id?}");
              });
 
             app.UseSpa(spa =>

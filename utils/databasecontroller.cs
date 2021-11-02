@@ -139,12 +139,12 @@ namespace wtw_task_challenge.utils
             controller.OpenConnection();
             SqlDataReader reader =
                 controller
-                    .ExecuteQueryWithReturn("SELECT * FROM [dbo].[tasks] WHERE [id] = '" +
+                    .ExecuteQueryWithReturn("SELECT * FROM [dbo].[tasks] WHERE [id] ='" +
                     id +
                     "'");
             while (reader.Read())
             {
-                task.Id = reader.GetInt16(0);
+                task.Id = reader.GetInt32(0);
                 task.Title = reader.GetString(1);
                 task.Description = reader.GetString(2);
                 task.Status = reader.GetString(3);
@@ -155,7 +155,7 @@ namespace wtw_task_challenge.utils
             return task;
         }
 
-        public List<Tasks> GetTasksByStatus(Tasks status)
+        public List<Tasks> GetTasksByStatus(Tasks Status)
         {
             List<Tasks> tasks = new List<Tasks>();
             controller = new DatabaseController();
@@ -163,7 +163,7 @@ namespace wtw_task_challenge.utils
             SqlDataReader reader =
                 controller
                     .ExecuteQueryWithReturn("SELECT * FROM [dbo].[tasks] WHERE [status] = '" +
-                    status +
+                    Status +
                     "'");
             while (reader.Read())
             {

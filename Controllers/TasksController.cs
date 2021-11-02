@@ -22,11 +22,11 @@ namespace wtw_task_challenge.Controllers
 
 
         // Get task with specific id
-        [HttpGet("id")]
-        public IEnumerable<Tasks> GetTask(Tasks id)
+        [HttpGet("{id}")]
+        public IEnumerable<Tasks> GetTask(Tasks specificId)
         {
             toDoListManager = new ToDoListManager();
-            return (IEnumerable<Tasks>)toDoListManager.GetTask(id);
+            return (IEnumerable<Tasks>)toDoListManager.GetTask(specificId);
         }
 
         //Get task with specific status
@@ -47,7 +47,7 @@ namespace wtw_task_challenge.Controllers
         }
 
         // Put task with specific id
-        [HttpPut("id")]
+        [HttpPut("{id}")]
         public void Put(Tasks id, [FromBody] Tasks task)
         {
             //Update task in database
@@ -57,7 +57,7 @@ namespace wtw_task_challenge.Controllers
         }
 
         //Delete task with specific id
-        [HttpDelete("id")]
+        [HttpDelete("{id}")]
         public void Delete(Tasks id)
         {
             //Delete task from database
