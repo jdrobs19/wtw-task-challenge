@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './TaskBoard.css';
 
-export class AddTask extends Component {
-    static displayName = AddTask.name;
+export class UpdateTask extends Component {
+    static displayName = UpdateTask.name;
 
     render() {
         return (
@@ -13,7 +13,7 @@ export class AddTask extends Component {
                     <div className="modal-dialog modal-dialog-centered" role="document">
                         <div className="modal-content">
                             <div className="modal-header">
-                                <h5 className="modal-title" id="task-form-modal">Add New Task</h5>
+                                <h5 className="modal-title" id="task-form-modal">Update Task</h5>
                             </div>
                             <div className="modal-body">
                                 <form>
@@ -28,9 +28,17 @@ export class AddTask extends Component {
                                     <div className="form-group">
                                         <label for="modalTaskPriority">Task Priority</label>
                                         <select id="modalTaskPriority" className="form-control">
-                                            <option>Low</option>
-                                            <option>Medium</option>
                                             <option>High</option>
+                                            <option>Medium</option>
+                                            <option>Low</option>
+                                        </select>
+                                    </div>
+                                    <div className="form-group">
+                                        <label for="modalTaskStatus">Task Status</label>
+                                        <select id="modalTaskStatus" className="form-control">
+                                            <option>Not Started</option>
+                                            <option>Started</option>
+                                            <option>Complete</option>
                                         </select>
                                     </div>
                                     <div className="form-group">

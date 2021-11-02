@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { SingleTask } from './SingleTask';
 import './TaskBoard.css';
 
 export class Taskboard extends Component {
@@ -21,7 +22,6 @@ export class Taskboard extends Component {
                                 <div className="card">
                                     <h4 className="card-header bg-dark text-light">To Do</h4>
                                     <ul id="list-toDo" className="list-group list-group-flush">
-                                    
                                     </ul>
                                 </div>
                             </div>
@@ -32,7 +32,7 @@ export class Taskboard extends Component {
                                 <div className="card">
                                     <h4 className="card-header bg-dark text-light">In Progess</h4>
                                     <ul id="list-inProgress" className="list-group list-group-flush">
-
+                                        
                                     </ul>
                                 </div>
                             </div>
