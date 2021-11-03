@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component} from 'react';
 import ReactDOM from 'react-dom';
 import './TaskBoard.css';
 
@@ -9,7 +9,7 @@ export class AddTask extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            message: ''
+            
         };
     }
 
@@ -41,7 +41,7 @@ export class AddTask extends Component {
     render() {
         return (
 
-            <div id="task-form-modal" tabindex="-1" role="dialog" aria-labelledby="task-form-modal"
+            <div id="task-form-modal" tabIndex="-1" role="dialog" aria-labelledby="task-form-modal"
                 aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
@@ -51,23 +51,23 @@ export class AddTask extends Component {
                         <div className="modal-body">
                             <form>
                                 <div className="form-group">
-                                    <label for="modalTaskTitle">Task Title</label>
+                                    <label htmlFor="modalTaskTitle">Task Title</label>
                                     <input type="text" id="modalTaskTitle" rows="1" className="form-control" ref="Title"></input>
                                 </div>
                                 <div className="form-group">
-                                    <label for="modalTaskDescription">Task description</label>
+                                    <label htmlFor="modalTaskDescription">Task description</label>
                                     <textarea id="modalTaskDescription" rows="3" className="form-control" ref="Description"></textarea>
                                 </div>
                                 <div className="form-group">
-                                    <label for="modalTaskStatus" >Task Status</label>
-                                    <select id="modalTaskStatus" className="form-control" disabled="true" ref="Status">
+                                    <label htmlFor="modalTaskStatus" >Task Status</label>
+                                    <select id="modalTaskStatus" className="form-control" disabled={true} ref="Status">
                                         <option>Not Started</option>
                                         <option>Started</option>
                                         <option>Complete</option>
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <label for="modalTaskPriority">Task Priority</label>
+                                    <label htmlFor="modalTaskPriority">Task Priority</label>
                                     <select id="modalTaskPriority" className="form-control" ref="Priority">
                                         <option>Low</option>
                                         <option>Medium</option>
@@ -75,8 +75,8 @@ export class AddTask extends Component {
                                     </select>
                                 </div>
                                 <div className="form-group">
-                                    <label for="modalDueDate">Due date</label>
-                                    <input type="text" className="form-control" id="modalDueDate" placeholder="mm/dd/yyyy" autocomplete="off" ref="Due" />
+                                    <label htmlFor="modalDueDate">Due date</label>
+                                    <input type="text" className="form-control" id="modalDueDate" placeholder="mm/dd/yyyy" autoComplete="off" ref="Due" />
                                 </div>
                             </form>
                         </div>

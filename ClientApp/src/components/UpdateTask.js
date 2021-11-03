@@ -47,7 +47,8 @@ export class UpdateTask extends Component {
         fetch("https://localhost:44302/tasks/" + task.Id, {
             method: 'PUT',
             headers: {
-                'Content-type': 'application/json'
+                'Content-type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify(task)
         }).then(response => response.json())
@@ -78,7 +79,7 @@ export class UpdateTask extends Component {
         } else {
             return (
 
-<div  id="task-form-modal" tabindex="-1" role="dialog" aria-labelledby="task-form-modal"
+                <div id="task-form-modal" tabIndex="-1" role="dialog" aria-labelledby="task-form-modal"
                     aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered" role="document">
                         <div className="modal-content">
@@ -87,20 +88,20 @@ export class UpdateTask extends Component {
                             </div>
                             <div className="modal-body">
                                 <form>
-                                <div className="form-group">
-                                <div className="form-group">
-                                        <label for="modalTaskDescription">Task ID</label>
-                                        <input id="modalTaskDescription" rows="1" className="form-control" value={tasks.id} ref="Id"></input>
-                                    </div>
-                                        <label for="modalTaskTitle">Task Title</label>
+                                    <div className="form-group">
+                                        <div className="form-group">
+                                            <label htmlFor="modalTaskDescription">Task ID</label>
+                                            <input id="modalTaskDescription" rows="1" className="form-control" defaultValue={tasks.id} disabled={true} ref="Id"></input>
+                                        </div>
+                                        <label htmlFor="modalTaskTitle">Task Title</label>
                                         <input type="text" id="modalTaskTitle" rows="1" className="form-control" defaultValue={tasks.title} ref="Title"></input>
                                     </div>
                                     <div className="form-group">
-                                        <label for="modalTaskDescription" >Task description</label>
+                                        <label htmlFor="modalTaskDescription" >Task description</label>
                                         <textarea id="modalTaskDescription" rows="3" className="form-control" defaultValue={tasks.description} ref="Description"></textarea>
                                     </div>
                                     <div className="form-group">
-                                        <label for="modalTaskPriority" >Task Priority</label>
+                                        <label htmlFor="modalTaskPriority" >Task Priority</label>
                                         <select id="modalTaskPriority" className="form-control" defaultValue={tasks.priority} ref="Priority">
                                             <option>High</option>
                                             <option>Medium</option>
@@ -108,7 +109,7 @@ export class UpdateTask extends Component {
                                         </select>
                                     </div>
                                     <div className="form-group">
-                                        <label for="modalTaskStatus" >Task Status</label>
+                                        <label htmlFor="modalTaskStatus" >Task Status</label>
                                         <select id="modalTaskStatus" className="form-control" defaultValue={tasks.status} ref="Status">
                                             <option>Not Started</option>
                                             <option>Started</option>
@@ -116,8 +117,8 @@ export class UpdateTask extends Component {
                                         </select>
                                     </div>
                                     <div className="form-group">
-                                        <label for="modalDueDate">Due date</label>
-                                        <input type="text" className="form-control" id="modalDueDate" placeholder="mm/dd/yyyy" autocomplete="off" defaultValue={tasks.due} ref="Due"/>
+                                        <label htmlFor="modalDueDate">Due date</label>
+                                        <input type="text" className="form-control" id="modalDueDate" placeholder="mm/dd/yyyy" autoComplete="off" defaultValue={tasks.due} ref="Due" />
                                     </div>
                                 </form>
                             </div>
@@ -129,8 +130,8 @@ export class UpdateTask extends Component {
                         </div>
                     </div>
                 </div>
-                
-        );
+
+            );
+        }
     }
-}
 }
