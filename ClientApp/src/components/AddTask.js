@@ -1,11 +1,42 @@
-import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { Component, useState } from 'react';
+import ReactDOM from 'react-dom';
 import './TaskBoard.css';
 
 export class AddTask extends Component {
     static displayName = AddTask.name;
 
-   
+    //POST request to create a new task
+    constructor(props) {
+        super(props);
+        this.state = {
+            message: ''
+        };
+    }
+
+    createTask = () => {
+        let task = {
+            Title: this.refs.Title.value,
+            Description: this.refs.Description.value,
+            Status: this.refs.Status.value,
+            Priority: this.refs.Priority.value,
+            Due: this.refs.Due.value
+        };
+
+        fetch("https://localhost:44302/tasks", {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(task)
+        }).then(response => response.json()).then(response => {
+            if (response) {
+                this.setState({
+                    message: 'Task created successfully'
+                });
+            }
+        });
+    }
+
 
     render() {
         return (
@@ -21,15 +52,15 @@ export class AddTask extends Component {
                             <form>
                                 <div className="form-group">
                                     <label for="modalTaskTitle">Task Title</label>
-                                    <input type="text" id="modalTaskTitle" rows="1" className="form-control" name="title"></input>
+                                    <input type="text" id="modalTaskTitle" rows="1" className="form-control" ref="Title"></input>
                                 </div>
                                 <div className="form-group">
                                     <label for="modalTaskDescription">Task description</label>
-                                    <textarea id="modalTaskDescription" rows="3" className="form-control" name="description"></textarea>
+                                    <textarea id="modalTaskDescription" rows="3" className="form-control" ref="Description"></textarea>
                                 </div>
                                 <div className="form-group">
                                     <label for="modalTaskStatus" >Task Status</label>
-                                    <select id="modalTaskStatus" className="form-control" disabled="true" name="status">
+                                    <select id="modalTaskStatus" className="form-control" disabled="true" ref="Status">
                                         <option>Not Started</option>
                                         <option>Started</option>
                                         <option>Complete</option>
@@ -37,7 +68,7 @@ export class AddTask extends Component {
                                 </div>
                                 <div className="form-group">
                                     <label for="modalTaskPriority">Task Priority</label>
-                                    <select id="modalTaskPriority" className="form-control" name="priority">
+                                    <select id="modalTaskPriority" className="form-control" ref="Priority">
                                         <option>Low</option>
                                         <option>Medium</option>
                                         <option>High</option>
@@ -45,13 +76,14 @@ export class AddTask extends Component {
                                 </div>
                                 <div className="form-group">
                                     <label for="modalDueDate">Due date</label>
-                                    <input type="text" className="form-control" id="modalDueDate" placeholder="mm/dd/yyyy" autocomplete="off" name="due"/>
+                                    <input type="text" className="form-control" id="modalDueDate" placeholder="mm/dd/yyyy" autocomplete="off" ref="Due" />
                                 </div>
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <NavLink type="button" className="btn btn-close" data-dismiss="modal" tag={Link} to="/">Close</NavLink>
-                            <button type="submit" className="btn btn-save" onClick={() => this.submit()}>Save Task</button>
+                            <a type="button" className="btn btn-close" data-dismiss="modal" href="/">Close</a>
+                            <button type="submit" className="btn btn-save" onClick={this.createTask}>Save Task</button>
+                            <p>{this.state.message}</p>
                         </div>
                     </div>
                 </div>
@@ -60,3 +92,6 @@ export class AddTask extends Component {
         );
     }
 }
+
+const element = <AddTask />;
+ReactDOM.render(element, document.getElementById('root'));

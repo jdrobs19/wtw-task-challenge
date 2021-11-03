@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
 import './TaskBoard.css';
 
 export class UpdateTask extends Component {
@@ -10,7 +9,8 @@ export class UpdateTask extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            tasks: []
+            tasks: [],
+            message: ''
         };
     }
 
@@ -32,6 +32,39 @@ export class UpdateTask extends Component {
                     });
                 }
             )
+    }
+
+    updateTask = () => {
+        let task = {
+            Id: this.refs.Id.value,
+            Title: this.refs.Title.value,
+            Description: this.refs.Description.value,
+            Status: this.refs.Status.value,
+            Priority: this.refs.Priority.value,
+            Due: this.refs.Due.value
+        };
+
+        fetch("https://localhost:44302/tasks/" + task.Id, {
+            method: 'PUT',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(task)
+        }).then(response => response.json())
+    }
+
+    deleteTask = () => {
+        let task = {
+            Id: this.refs.Id.value,
+        };
+
+        fetch("https://localhost:44302/tasks/" + task.Id, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify(task)
+        }).then(response => response.json())
     }
 
     render() {
@@ -57,18 +90,18 @@ export class UpdateTask extends Component {
                                 <div className="form-group">
                                 <div className="form-group">
                                         <label for="modalTaskDescription">Task ID</label>
-                                        <input id="modalTaskDescription" rows="1" className="form-control" value={tasks.id} disabled="true"></input>
+                                        <input id="modalTaskDescription" rows="1" className="form-control" value={tasks.id} ref="Id"></input>
                                     </div>
                                         <label for="modalTaskTitle">Task Title</label>
-                                        <input type="text" id="modalTaskTitle" rows="1" className="form-control" value={tasks.title}></input>
+                                        <input type="text" id="modalTaskTitle" rows="1" className="form-control" defaultValue={tasks.title} ref="Title"></input>
                                     </div>
                                     <div className="form-group">
                                         <label for="modalTaskDescription" >Task description</label>
-                                        <textarea id="modalTaskDescription" rows="3" className="form-control"value={tasks.description}></textarea>
+                                        <textarea id="modalTaskDescription" rows="3" className="form-control" defaultValue={tasks.description} ref="Description"></textarea>
                                     </div>
                                     <div className="form-group">
                                         <label for="modalTaskPriority" >Task Priority</label>
-                                        <select id="modalTaskPriority" className="form-control" value={tasks.priority}>
+                                        <select id="modalTaskPriority" className="form-control" defaultValue={tasks.priority} ref="Priority">
                                             <option>High</option>
                                             <option>Medium</option>
                                             <option>Low</option>
@@ -76,7 +109,7 @@ export class UpdateTask extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label for="modalTaskStatus" >Task Status</label>
-                                        <select id="modalTaskStatus" className="form-control"value={tasks.status}>
+                                        <select id="modalTaskStatus" className="form-control" defaultValue={tasks.status} ref="Status">
                                             <option>Not Started</option>
                                             <option>Started</option>
                                             <option>Complete</option>
@@ -84,13 +117,14 @@ export class UpdateTask extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label for="modalDueDate">Due date</label>
-                                        <input type="text" className="form-control" id="modalDueDate" placeholder="mm/dd/yyyy" autocomplete="off" value={tasks.due}/>
+                                        <input type="text" className="form-control" id="modalDueDate" placeholder="mm/dd/yyyy" autocomplete="off" defaultValue={tasks.due} ref="Due"/>
                                     </div>
                                 </form>
                             </div>
                             <div className="modal-footer">
-                                <NavLink type="button" className="btn btn-close" data-dismiss="modal" tag={Link} to="/">Close</NavLink>
-                                <button type="button" className="btn btn-save">Update Task</button>
+                                <a type="button" className="btn btn-close" data-dismiss="modal" href="/">Close</a>
+                                <button type="button" className="btn btn-delete" onClick={this.deleteTask}>Delete</button>
+                                <button type="button" className="btn btn-save" onClick={this.updateTask}>Update Task</button>
                             </div>
                         </div>
                     </div>
