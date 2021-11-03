@@ -62,11 +62,11 @@ export class Taskboard extends Component {
                                         <ul id="list-toDo" className="list-group list-group-flush">
                                                 {tasks.map(task => (
                                                     <li key={task.id}>
-                                                        <h5>{task.title}</h5>
-                                                        <p>{task.description}</p>
-                                                        <p>{task.priority}</p>
-                                                        <p>{task.status}</p>
-                                                        <p>{task.due}</p>
+                                                        <h5>Title: {task.title}</h5>
+                                                        <p>Description: {task.description}</p>
+                                                        <p>Priority: {task.priority}</p>
+                                                        <p id="Not Started">Status: {task.status}</p>
+                                                        <p>Due: {task.due}</p>
                                                     </li>
                                                 ))}
                                         </ul>
@@ -79,11 +79,11 @@ export class Taskboard extends Component {
                                         <ul id="list-inProgress" className="list-group list-group-flush">
                                         {tasks.map(task => (
                                                     <li key={task.id}>
-                                                        <h5>{task.title}</h5>
-                                                        <p>{task.description}</p>
-                                                        <p>{task.priority}</p>
-                                                        <p>{task.status}</p>
-                                                        <p>{task.due}</p>
+                                                        <h5>Title: {task.title}</h5>
+                                                        <p>Description: {task.description}</p>
+                                                        <p>Priority: {task.priority}</p>
+                                                        <p id="Started">Status: {task.status}</p>
+                                                        <p>Due: {task.due}</p>
                                                     </li>
                                                 ))}
                                         </ul>
@@ -96,11 +96,11 @@ export class Taskboard extends Component {
                                         <ul id="list-done" className="list-group list-group-flush">
                                         {tasks.map(task => (
                                                     <li key={task.id}>
-                                                        <h5>{task.title}</h5>
-                                                        <p>{task.description}</p>
-                                                        <p>{task.priority}</p>
-                                                        <p>{task.status}</p>
-                                                        <p>{task.due}</p>
+                                                        <h5>Title: {task.title}</h5>
+                                                        <p>Description: {task.description}</p>
+                                                        <p>Priority: {task.priority}</p>
+                                                        <p id="Complete">Status: {task.status}</p>
+                                                        <p>Due: {task.due}</p>
                                                     </li>
                                                 ))}
                                         </ul>
