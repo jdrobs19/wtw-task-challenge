@@ -57,7 +57,7 @@ export class UpdateTask extends Component {
                                 <div className="form-group">
                                 <div className="form-group">
                                         <label for="modalTaskDescription">Task ID</label>
-                                        <input id="modalTaskDescription" rows="1" className="form-control" value={tasks.id}></input>
+                                        <input id="modalTaskDescription" rows="1" className="form-control" value={tasks.id} disabled="true"></input>
                                     </div>
                                         <label for="modalTaskTitle">Task Title</label>
                                         <input type="text" id="modalTaskTitle" rows="1" className="form-control" value={tasks.title}></input>

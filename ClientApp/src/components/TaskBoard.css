@@ -45,3 +45,13 @@ ul.list-group {
   .btn-delete:hover{
     background-position: 1px -50px;
   }
+
+  li{
+    margin: 5px;
+    background-color: #2bd2ff;
+    border-radius: 15px;
+    padding: 10px;
+    text-decoration: none;
+    color: white;
+    list-style-type: none;
+  }

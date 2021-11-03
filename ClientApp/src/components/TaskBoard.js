@@ -60,15 +60,17 @@ export class Taskboard extends Component {
                                     <div className="card">
                                         <h4 className="card-header bg-dark text-light">Not Started</h4>
                                         <ul id="list-toDo" className="list-group list-group-flush">
-                                                {tasks.map(task => (
-                                                    <li key={task.id}>
-                                                        <h5>Title: {task.title}</h5>
-                                                        <p>Description: {task.description}</p>
-                                                        <p>Priority: {task.priority}</p>
-                                                        <p id="Not Started">Status: {task.status}</p>
-                                                        <p>Due: {task.due}</p>
-                                                    </li>
-                                                ))}
+                                            {tasks.filter(task => task.status === "Not Started").map(task => (
+                                                <NavLink key={task.id} to={`/updatetask/${task.id}`}>
+                                                <li key={task.id}>
+                                                    <h5>Title: {task.title}</h5>
+                                                    <p>Description: {task.description}</p>
+                                                    <p>Priority: {task.priority}</p>
+                                                    <p>Status: {task.status}</p>
+                                                    <p>Due: {task.due}</p>
+                                                </li>
+                                                </NavLink>
+                                            ))}
                                         </ul>
                                     </div>
                                 </div>
@@ -77,15 +79,17 @@ export class Taskboard extends Component {
                                     <div className="card">
                                         <h4 className="card-header bg-dark text-light">Started</h4>
                                         <ul id="list-inProgress" className="list-group list-group-flush">
-                                        {tasks.map(task => (
+                                            {tasks.filter(task => task.status === "Started").map(task => (
+                                                <NavLink key={task.id} to={`/updatetask/${task.id}`}>
                                                     <li key={task.id}>
                                                         <h5>Title: {task.title}</h5>
                                                         <p>Description: {task.description}</p>
                                                         <p>Priority: {task.priority}</p>
-                                                        <p id="Started">Status: {task.status}</p>
+                                                        <p>Status: {task.status}</p>
                                                         <p>Due: {task.due}</p>
                                                     </li>
-                                                ))}
+                                                </NavLink>
+                                            ))}
                                         </ul>
                                     </div>
                                 </div>
@@ -94,15 +98,17 @@ export class Taskboard extends Component {
                                     <div className="card">
                                         <h4 className="card-header bg-dark text-light">Complete</h4>
                                         <ul id="list-done" className="list-group list-group-flush">
-                                        {tasks.map(task => (
-                                                    <li key={task.id}>
-                                                        <h5>Title: {task.title}</h5>
-                                                        <p>Description: {task.description}</p>
-                                                        <p>Priority: {task.priority}</p>
-                                                        <p id="Complete">Status: {task.status}</p>
-                                                        <p>Due: {task.due}</p>
-                                                    </li>
-                                                ))}
+                                            {tasks.filter(task => task.status === "Complete").map(task => (
+                                                <NavLink key={task.id} to={`/updatetask/${task.id}`}>
+                                                <li key={task.id}>
+                                                    <h5>Title: {task.title}</h5>
+                                                    <p>Description: {task.description}</p>
+                                                    <p>Priority: {task.priority}</p>
+                                                    <p>Status: {task.status}</p>
+                                                    <p>Due: {task.due}</p>
+                                                </li>
+                                                </NavLink>
+                                            ))}
                                         </ul>
                                     </div>
                                 </div>
