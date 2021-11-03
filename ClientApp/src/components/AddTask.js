@@ -40,7 +40,7 @@ export class AddTask extends Component {
                                 </form>
                             </div>
                             <div className="modal-footer">
-                                <NavLink type="button" className="btn btn-close" data-dismiss="modal" tag={Link} to="/taskboard">Back</NavLink>
+                                <NavLink type="button" className="btn btn-close" data-dismiss="modal" tag={Link} to="/">Close</NavLink>
                                 <button type="button" className="btn btn-save">Save Task</button>
                             </div>
                         </div>

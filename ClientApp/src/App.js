@@ -15,7 +15,7 @@ export default class App extends Component {
     return (
       <Layout>
         <Route path='/fetch-data' component={FetchData} />
-        <Route path='/' component={Taskboard} />
+        <Route exact path='/' component={Taskboard} />
         <Route path='/addtask' component={AddTask}  />
         <Route path='/updatetask/:id' component={UpdateTask}  />
       </Layout>

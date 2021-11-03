@@ -18,6 +18,10 @@ export class UpdateTask extends Component {
                             <div className="modal-body">
                                 <form>
                                 <div className="form-group">
+                                <div className="form-group">
+                                        <label for="modalTaskDescription">Task ID</label>
+                                        <input id="modalTaskDescription" rows="1" className="form-control"></input>
+                                    </div>
                                         <label for="modalTaskTitle">Task Title</label>
                                         <input type="text" id="modalTaskTitle" rows="1" className="form-control"></input>
                                     </div>
@@ -48,7 +52,7 @@ export class UpdateTask extends Component {
                                 </form>
                             </div>
                             <div className="modal-footer">
-                                <NavLink type="button" className="btn btn-close" data-dismiss="modal" tag={Link} to="/taskboard">Back</NavLink>
+                                <NavLink type="button" className="btn btn-close" data-dismiss="modal" tag={Link} to="/">Close</NavLink>
                                 <button type="button" className="btn btn-save">Save Task</button>
                             </div>
                         </div>
