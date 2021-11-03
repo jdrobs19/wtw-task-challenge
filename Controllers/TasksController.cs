@@ -31,10 +31,10 @@ namespace wtw_task_challenge.Controllers
 
         //Get task with specific status
         [HttpGet("status/{status}")]
-        public IEnumerable<Tasks> GetTasksByStatus(Tasks status)
+        public IEnumerable<Tasks> GetTasksByStatus(Tasks taskStatus)
         {
             toDoListManager = new ToDoListManager();
-            return (IEnumerable<Tasks>)toDoListManager.GetTasksByStatus(status);
+            return (IEnumerable<Tasks>)toDoListManager.GetTasksByStatus(taskStatus);
         }
 
         //Post
