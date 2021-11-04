@@ -36,7 +36,7 @@ export class UpdateTask extends Component {
 
     updateTask = () => {
         let task = {
-            Id: this.refs.Id.value,
+            Id: parseInt(this.refs.Id.value),
             Title: this.refs.Title.value,
             Description: this.refs.Description.value,
             Status: this.refs.Status.value,

@@ -29,14 +29,6 @@ namespace wtw_task_challenge.Controllers
             return toDoListManager.GetTask(specificId);
         }
 
-        //Get task with specific status
-        [HttpGet("status/{status}")]
-        public IEnumerable<Tasks> GetTasksByStatus(Tasks taskStatus)
-        {
-            toDoListManager = new ToDoListManager();
-            return (IEnumerable<Tasks>)toDoListManager.GetTasksByStatus(taskStatus);
-        }
-
         //Post
         [HttpPost]
         public void AddTask([FromBody] Tasks task)
